@@ -29,7 +29,7 @@ namespace SendMessageToServers
                 string sFilter = "(&(objectCategory=computer)(name=" + servers[i] + "))";
                 DirectorySearcher DirectorySearch = new DirectorySearcher(de, sFilter);
                 SearchResult DirectorySearchResult = DirectorySearch.FindOne();
-                Console.Read();
+                
 
 
             }
