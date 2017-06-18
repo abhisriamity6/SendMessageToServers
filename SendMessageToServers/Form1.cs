@@ -21,7 +21,7 @@ namespace SendMessageToServers
         {
             AddServer verifyservers = new AddServer();
             verifyservers.Show();
-           String s =  ((TextBox)verifyservers.Controls["textBox1"]).Text;
+            String s =  ((TextBox)verifyservers.Controls["textBox1"]).Text;
             MessageBox.Show(s);
 
         }
