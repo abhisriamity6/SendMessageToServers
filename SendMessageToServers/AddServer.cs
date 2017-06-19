@@ -10,8 +10,10 @@ using System.Windows.Forms;
 
 namespace SendMessageToServers
 {
+    
     public partial class AddServer : Form
     {
+        public string Str = null;
         public AddServer()
         {
             InitializeComponent();
@@ -33,6 +35,17 @@ namespace SendMessageToServers
 
 
             }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Str = textBox1.Text;
+            this.Close();
+        }
+
+        private void AddServer_Load(object sender, EventArgs e)
+        {
 
         }
     }

@@ -12,6 +12,7 @@ namespace SendMessageToServers
 {
     public partial class Form1 : Form
     {
+        AddServer verifyservers = new AddServer();
         public Form1()
         {
             InitializeComponent();
@@ -19,11 +20,30 @@ namespace SendMessageToServers
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AddServer verifyservers = new AddServer();
+           
             verifyservers.Show();
-            String s =  ((TextBox)verifyservers.Controls["textBox1"]).Text;
-            MessageBox.Show(s);
+           
 
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+          
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ServerList.Text = null;
+        }
+
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            if (verifyservers.Str != null)
+            {
+                MessageBox.Show("Active");
+            }
         }
     }
 }
