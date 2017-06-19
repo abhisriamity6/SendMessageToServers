@@ -32,7 +32,7 @@ namespace SendMessageToServers
                 DirectorySearcher DirectorySearch = new DirectorySearcher(de, sFilter);
                 SearchResult DirectorySearchResult = DirectorySearch.FindOne();
                 
-
+                   
 
             }
 
