@@ -42,7 +42,9 @@ namespace SendMessageToServers
         {
             if (verifyservers.Str != null)
             {
-                MessageBox.Show("Active");
+                ServerList.Font = new Font("Times New Roman", 10, FontStyle.Underline);
+                ServerList.Text = verifyservers.Str;
+
             }
         }
     }

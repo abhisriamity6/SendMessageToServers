@@ -22,17 +22,54 @@ namespace SendMessageToServers
         private void button1_Click(object sender, EventArgs e)
         {
             int i;
+            String Domainname = System.Net.NetworkInformation.IPGlobalProperties.GetIPGlobalProperties().DomainName;
             String[] servers = textBox1.Text.Split(';');
-            for(i = 0; i < servers.Length; i++)
+            textBox1.Text = null;
+            bool firstelement = false;
+            var myList = new List<string>();
+            for (i = 0; i < servers.Length; i++)
             {
-                string sADPath = "LDAP://nwtraders.com";
+                String serverNetBiosName = null;
+                string sADPath = "LDAP://" + Domainname;
                 DirectoryEntry de = new DirectoryEntry(sADPath);
-
-                string sFilter = "(&(objectCategory=computer)(name=" + servers[i] + "))";
+                if (servers[i].Contains("."))
+                {
+                     serverNetBiosName = servers[i].Split('.')[0];
+                }
+                else
+                {
+                    serverNetBiosName = servers[i];
+                }
+                string sFilter = "(&(objectCategory=computer)(name=" + serverNetBiosName + "))";
                 DirectorySearcher DirectorySearch = new DirectorySearcher(de, sFilter);
                 SearchResult DirectorySearchResult = DirectorySearch.FindOne();
-                
-                   
+                if (DirectorySearchResult != null)
+                {
+                    
+                    
+                    String Servername = serverNetBiosName + "." + Domainname;
+                    
+
+                    textBox1.Font = new Font("Times New Roman", 10, FontStyle.Underline);
+                    if (!firstelement)
+                    {
+                        textBox1.Text = textBox1.Text + Servername;
+                        firstelement = true;
+                        myList.Add(Servername);
+                        
+                    }
+                    else
+                    {   if (!myList.Contains(Servername))
+                        {
+                            textBox1.Text = textBox1.Text + ";" + Servername;
+                            myList.Add(Servername);
+                        }   
+                    }
+
+                }
+
+
+
 
             }
 
@@ -45,6 +82,11 @@ namespace SendMessageToServers
         }
 
         private void AddServer_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
