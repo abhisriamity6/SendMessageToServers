@@ -78,7 +78,7 @@ namespace SendMessageToServers
         private void button2_Click(object sender, EventArgs e)
         {
             Str = textBox1.Text;
-            this.Close();
+            this.Hide();
         }
 
         private void AddServer_Load(object sender, EventArgs e)
